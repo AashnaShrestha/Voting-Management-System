@@ -48,7 +48,7 @@ namespace VotingSytem.Webforms
             OracleConnection con = new OracleConnection(constr);
             con.Open();
             cmd.Connection = con;
-            cmd.CommandText = @"select jh.history_id, e.employee_name, d.department_name, j.job_name, jh.start_date, jh.end_date, jh.end_date-jh.start_date AS Time_Difference FROM Employee e JOIN Job_History jh ON e.employee_id = jh.employee_id JOIN department d ON jh.department_id = d.department_id JOIN job j ON jh.job_id = j.job_id WHERE jh.end_date IS NOT NULL AND e.employee_name LIKE '%" + employee + "' OR e.employee_name LIKE '" + employee + "%'";
+            cmd.CommandText = @"select jh.history_id, e.employee_name, d.department_name, j.job_name, jh.start_date, jh.end_date, jh.end_date-jh.start_date AS Time_Difference FROM Employee e JOIN Job_History jh ON e.employee_id = jh.employee_id JOIN department d ON jh.department_id = d.department_id JOIN job j ON jh.job_id = j.job_id WHERE e.employee_name LIKE '%" + employee + "' OR e.employee_name LIKE '" + employee + "%'AND jh.end_date IS NOT NULL";
             cmd.CommandType = CommandType.Text;
 
             DataTable dt = new DataTable("job_history");
