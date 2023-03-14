@@ -21,6 +21,7 @@
         <div class="form-group mb-2">
             <asp:Button ID="createRoleButton" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="CreateRoleBtn_Click" />
             <asp:Button ID="updateRoleButton" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="UpdateRoleBtn_Click" />
+            <asp:Button ID="clearFormButton" runat="server" Text="Clear" CssClass="btn btn-primary" OnClick="ClearBtn_Click" />
         </div>
         <div class="form-group mb-2">
             

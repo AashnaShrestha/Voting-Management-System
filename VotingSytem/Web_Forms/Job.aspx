@@ -27,6 +27,7 @@
         <div class="form-group mb-2">
             <asp:Button ID="createJobButton" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="CreateJobBtn_Click" />
             <asp:Button ID="updateJobButton" runat="server" Text="Update" CssClass="btn btn-primary" OnClick="UpdateJobBtn_Click" />
+            <asp:Button ID="clearFormButton" runat="server" Text="Clear" CssClass="btn btn-primary" OnClick="ClearBtn_Click" />
         </div>
         <div class="form-group mb-2">
             

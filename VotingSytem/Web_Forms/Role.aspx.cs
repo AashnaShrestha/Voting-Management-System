@@ -16,6 +16,7 @@ namespace VotingSytem.Webforms
         {
             if (!this.IsPostBack)
             {
+                updateRoleButton.Enabled = false;
                 this.BindGrid();
             }
         }
@@ -81,6 +82,8 @@ namespace VotingSytem.Webforms
             // Clearing the fields
             roleIdTextbox.Text = "";
             roleNameTextbox.Text = "";
+            updateRoleButton.Enabled = false;
+            createRoleButton.Enabled = true;
             RoleGV.EditIndex = -1;
 
             this.BindGrid();
@@ -108,11 +111,23 @@ namespace VotingSytem.Webforms
 
         protected void EditRole(object sender, GridViewEditEventArgs e)
         {
-
+            updateRoleButton.Enabled = true;
+            createRoleButton.Enabled = false;
             // get id for data update
             //txtID.Text = this.RoleGV.Rows[e.NewEditIndex].Cells[1].Text;
             roleIdTextbox.Text = this.RoleGV.Rows[e.NewEditIndex].Cells[1].Text.ToString().TrimStart().TrimEnd();
             roleNameTextbox.Text = this.RoleGV.Rows[e.NewEditIndex].Cells[2].Text.ToString().TrimStart().TrimEnd();
+        }
+        protected void ClearBtn_Click(object sender, EventArgs e)
+        {
+            // Clearing the fields
+            roleIdTextbox.Text = "";
+            roleNameTextbox.Text = "";
+            updateRoleButton.Enabled = false;
+            createRoleButton.Enabled = true;
+            RoleGV.EditIndex = -1;
+
+            this.BindGrid();
         }
     }
 }

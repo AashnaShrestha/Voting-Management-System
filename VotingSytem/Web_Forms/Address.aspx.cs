@@ -16,6 +16,7 @@ namespace VotingSytem.Webforms
         {
             if (!this.IsPostBack)
             {
+                updateAddressButton.Enabled = false;
                 this.BindGrid();
             }
         }
@@ -81,6 +82,8 @@ namespace VotingSytem.Webforms
             // Clearing the fields
             addressIdTextbox.Text = "";
             addressNameTextbox.Text = "";
+            updateAddressButton.Enabled = false;
+            createAddressButton.Enabled = true;
             AddressGV.EditIndex = -1;
 
             this.BindGrid();
@@ -108,11 +111,23 @@ namespace VotingSytem.Webforms
 
         protected void EditAddress(object sender, GridViewEditEventArgs e)
         {
-
+            updateAddressButton.Enabled = true;
+            createAddressButton.Enabled = false;
             // get id for data update
             //txtID.Text = this.AddressGV.Rows[e.NewEditIndex].Cells[1].Text;
             addressIdTextbox.Text = this.AddressGV.Rows[e.NewEditIndex].Cells[1].Text.ToString().TrimStart().TrimEnd();
             addressNameTextbox.Text = this.AddressGV.Rows[e.NewEditIndex].Cells[2].Text.ToString().TrimStart().TrimEnd();
+        }
+        protected void ClearBtn_Click(object sender, EventArgs e)
+        {
+            // Clearing the fields
+            addressIdTextbox.Text = "";
+            addressNameTextbox.Text = "";
+            updateAddressButton.Enabled = false;
+            createAddressButton.Enabled = true;
+            AddressGV.EditIndex = -1;
+
+            this.BindGrid();
         }
     }
 }

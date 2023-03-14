@@ -18,6 +18,7 @@ namespace VotingSytem.Webforms
         {
             if (!this.IsPostBack)
             {
+                updateJobButton.Enabled = false;
                 this.BindGrid();
                 this.GetRoles();
             }
@@ -115,6 +116,8 @@ namespace VotingSytem.Webforms
             // Clearing the fields
             jobIdTextbox.Text = "";
             jobNameTextbox.Text = "";
+            updateJobButton.Enabled = false;
+            createJobButton.Enabled = true;
             JobGV.EditIndex = -1;
 
             this.BindGrid();
@@ -142,11 +145,23 @@ namespace VotingSytem.Webforms
 
         protected void EditJob(object sender, GridViewEditEventArgs e)
         {
-
+            updateJobButton.Enabled = true;
+            createJobButton.Enabled = false;
             // get id for data update
             //txtID.Text = this.JobGV.Rows[e.NewEditIndex].Cells[1].Text;
             jobIdTextbox.Text = this.JobGV.Rows[e.NewEditIndex].Cells[1].Text.ToString().TrimStart().TrimEnd();
             jobNameTextbox.Text = this.JobGV.Rows[e.NewEditIndex].Cells[2].Text.ToString().TrimStart().TrimEnd();
+        }
+        protected void ClearBtn_Click(object sender, EventArgs e)
+        {
+            // Clearing the fields
+            jobIdTextbox.Text = "";
+            jobNameTextbox.Text = "";
+            updateJobButton.Enabled = false;
+            createJobButton.Enabled = true;
+            JobGV.EditIndex = -1;
+
+            this.BindGrid();
         }
     }
 }

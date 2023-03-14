@@ -87,6 +87,15 @@ namespace VotingSytem.Webforms
         protected global::System.Web.UI.WebControls.Button updateAddressButton;
 
         /// <summary>
+        /// clearFormButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button clearFormButton;
+
+        /// <summary>
         /// AddressGV control.
         /// </summary>
         /// <remarks>

@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace VotingSytem.Webforms
 {
-    public partial class JobHistory : System.Web.UI.Page
+    public partial class VotingDetail : System.Web.UI.Page
     {
         private string constr = "Data Source=localhost;Persist Security Info=True;User ID=Coursework; Password=coursework;";
         protected void Page_Load(object sender, EventArgs e)
@@ -25,10 +25,10 @@ namespace VotingSytem.Webforms
             OracleConnection con = new OracleConnection(constr);
             con.Open();
             cmd.Connection = con;
-            cmd.CommandText = @"select jh.history_id, e.employee_name, d.department_name, j.job_name, jh.start_date, jh.end_date, jh.end_date-jh.start_date AS Time_Difference FROM Employee e JOIN Job_History jh ON e.employee_id = jh.employee_id JOIN department d ON jh.department_id = d.department_id JOIN job j ON jh.job_id = j.job_id WHERE jh.end_date IS NOT NULL";
+            cmd.CommandText = @"SELECT vd.voter_id, e.employee_name AS Voter_Name, vd.voting_year, vd.voting_month, vd.candidate_id, evd.employee_name AS Candidate_Name FROM employee e JOIN voting_detail vd ON e.employee_id = vd.voter_id JOIN employee evd ON evd.employee_id = vd.candidate_id";
             cmd.CommandType = CommandType.Text;
 
-            DataTable dt = new DataTable("job_history");
+            DataTable dt = new DataTable("voting_detail");
 
             using (OracleDataReader sdr = cmd.ExecuteReader())
             {
@@ -37,10 +37,9 @@ namespace VotingSytem.Webforms
             con.Close();
 
 
-            JobHistoryGV.DataSource = dt;
-            JobHistoryGV.DataBind();
+            VotingDetailGV.DataSource = dt;
+            VotingDetailGV.DataBind();
         }
-
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
             string employee = searchTextbox.Text;
@@ -48,10 +47,10 @@ namespace VotingSytem.Webforms
             OracleConnection con = new OracleConnection(constr);
             con.Open();
             cmd.Connection = con;
-            cmd.CommandText = @"select jh.history_id, e.employee_name, d.department_name, j.job_name, jh.start_date, jh.end_date, jh.end_date-jh.start_date AS Time_Difference FROM Employee e JOIN Job_History jh ON e.employee_id = jh.employee_id JOIN department d ON jh.department_id = d.department_id JOIN job j ON jh.job_id = j.job_id WHERE jh.end_date IS NOT NULL AND e.employee_name LIKE '%" + employee + "' OR e.employee_name LIKE '" + employee + "%'";
+            cmd.CommandText = @"SELECT vd.voter_id, e.employee_name AS Voter_Name, vd.voting_year, vd.voting_month, vd.candidate_id, evd.employee_name AS Candidate_Name FROM employee e JOIN voting_detail vd ON e.employee_id = vd.voter_id JOIN employee evd ON evd.employee_id = vd.candidate_id WHERE e.employee_name LIKE '%" + employee + "' OR e.employee_name LIKE '" + employee + "%'";
             cmd.CommandType = CommandType.Text;
 
-            DataTable dt = new DataTable("job_history");
+            DataTable dt = new DataTable("voting_detail");
 
             using (OracleDataReader sdr = cmd.ExecuteReader())
             {
@@ -60,8 +59,8 @@ namespace VotingSytem.Webforms
             con.Close();
 
 
-            JobHistoryGV.DataSource = dt;
-            JobHistoryGV.DataBind();
+            VotingDetailGV.DataSource = dt;
+            VotingDetailGV.DataBind();
         }
     }
 }

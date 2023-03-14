@@ -7,65 +7,47 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VotingSytem
+namespace VotingSytem.Webforms
 {
 
 
-    public partial class _Default
+    public partial class EmployeeofTheMonth
     {
 
         /// <summary>
-        /// employeeLabel control.
+        /// yearTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label employeeLabel;
+        protected global::System.Web.UI.WebControls.TextBox yearTextbox;
 
         /// <summary>
-        /// departmentLabel control.
+        /// monthDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label departmentLabel;
+        protected global::System.Web.UI.WebControls.DropDownList monthDropDown;
 
         /// <summary>
-        /// roleLabel control.
+        /// searchButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label roleLabel;
+        protected global::System.Web.UI.WebControls.Button searchButton;
 
         /// <summary>
-        /// jobLabel control.
+        /// EmployeeofTheMonthGV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label jobLabel;
-
-        /// <summary>
-        /// dashboardChart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart dashboardChart;
-
-        /// <summary>
-        /// ChartDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ChartDataSource;
+        protected global::System.Web.UI.WebControls.GridView EmployeeofTheMonthGV;
     }
 }

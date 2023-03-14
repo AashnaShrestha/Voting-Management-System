@@ -14,7 +14,7 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form runat="server">
@@ -56,6 +56,9 @@
                         <li><a runat="server" href="~/Web_Forms/Job">Job</a></li>
                         <li><a runat="server" href="~/Web_Forms/Role">Role</a></li>
                         <li><a runat="server" href="~/Web_Forms/Address">Address</a></li>
+                        <li><a runat="server" href="~/Web_Forms/JobHistory">Job History</a></li>
+                        <li><a runat="server" href="~/Web_Forms/VotingDetail">VotingDetail</a></li>
+                         <li><a runat="server" href="~/Web_Forms/EmployeeofTheMonth">EmployeeofTheMonth</a></li>
                     </ul>
                 </div>
             </div>

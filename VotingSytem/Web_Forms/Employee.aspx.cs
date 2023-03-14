@@ -16,6 +16,7 @@ namespace VotingSytem.Webforms
         {
             if (!this.IsPostBack)
             {
+                updateEmployeeButton.Enabled = false;
                 this.BindGrid();
             }
         }
@@ -94,8 +95,22 @@ namespace VotingSytem.Webforms
             employeeNameTextbox.Text = "";
             dateOfBirthTextbox.Text = "";
             contactTextbox.Text = "";
+            updateEmployeeButton.Enabled = false;
+            createEmployeeButton.Enabled = true;
             EmployeeGV.EditIndex = -1;
 
+            this.BindGrid();
+        }
+
+        protected void ClearBtn_Click(object sender, EventArgs e)
+        {
+            // Clearing the fields
+            employeeNameTextbox.Text = "";
+            dateOfBirthTextbox.Text = "";
+            contactTextbox.Text = "";
+            updateEmployeeButton.Enabled = false;
+            createEmployeeButton.Enabled = true;
+            EmployeeGV.EditIndex = -1;
             this.BindGrid();
         }
 
@@ -131,7 +146,8 @@ namespace VotingSytem.Webforms
 
         protected void EditRecord(object sender, GridViewEditEventArgs e)
         {
-
+            updateEmployeeButton.Enabled = true;
+            createEmployeeButton.Enabled = false;
             // get id for data update
             //txtID.Text = this.EmployeeGV.Rows[e.NewEditIndex].Cells[1].Text;
             employeeNameTextbox.Text = this.EmployeeGV.Rows[e.NewEditIndex].Cells[2].Text.ToString().TrimStart().TrimEnd();

@@ -16,6 +16,7 @@ namespace VotingSytem.Webforms
         {
             if (!this.IsPostBack)
             {
+                updateDeptButton.Enabled = false;
                 this.BindGrid();
             }
         }
@@ -81,6 +82,8 @@ namespace VotingSytem.Webforms
             // Clearing the fields
             deptIdTextbox.Text = "";
             deptNameTextbox.Text = "";
+            updateDeptButton.Enabled = false;
+            clearFormButton.Enabled = true;
             DepartmentGV.EditIndex = -1;
 
             this.BindGrid();
@@ -108,11 +111,23 @@ namespace VotingSytem.Webforms
 
         protected void EditDepartment(object sender, GridViewEditEventArgs e)
         {
+            updateDeptButton.Enabled = true;
+            clearFormButton.Enabled = false;
 
             // get id for data update
             //txtID.Text = this.DepartmentGV.Rows[e.NewEditIndex].Cells[1].Text;
             deptIdTextbox.Text= this.DepartmentGV.Rows[e.NewEditIndex].Cells[1].Text.ToString().TrimStart().TrimEnd();
             deptNameTextbox.Text = this.DepartmentGV.Rows[e.NewEditIndex].Cells[2].Text.ToString().TrimStart().TrimEnd();
+        }
+        protected void ClearBtn_Click(object sender, EventArgs e)
+        {
+            // Clearing the fields
+            deptIdTextbox.Text = "";
+            deptNameTextbox.Text = "";
+            updateDeptButton.Enabled = false;
+            createDeptButton.Enabled = true;
+            DepartmentGV.EditIndex = -1;
+            this.BindGrid();
         }
     }
 }

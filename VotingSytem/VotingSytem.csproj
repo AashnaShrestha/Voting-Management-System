@@ -83,6 +83,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -157,11 +158,15 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="styles.css" />
     <Content Include="Web_Forms\Address.aspx" />
     <Content Include="Web_Forms\CreateEmployee.aspx" />
     <Content Include="Web_Forms\Department.aspx" />
     <Content Include="Web_Forms\Employee.aspx" />
+    <Content Include="Web_Forms\EmployeeofTheMonth.aspx" />
+    <Content Include="Web_Forms\JobHistory.aspx" />
     <Content Include="Web_Forms\Role.aspx" />
+    <Content Include="Web_Forms\VotingDetail.aspx" />
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -253,12 +258,26 @@
     <Compile Include="Web_Forms\Department.aspx.designer.cs">
       <DependentUpon>Department.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web_Forms\EmployeeofTheMonth.aspx.cs">
+      <DependentUpon>EmployeeofTheMonth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\EmployeeofTheMonth.aspx.designer.cs">
+      <DependentUpon>EmployeeofTheMonth.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web_Forms\Job.aspx.cs">
       <DependentUpon>Job.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Web_Forms\Job.aspx.designer.cs">
       <DependentUpon>Job.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web_Forms\JobHistory.aspx.cs">
+      <DependentUpon>JobHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\JobHistory.aspx.designer.cs">
+      <DependentUpon>JobHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web_Forms\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -294,6 +313,13 @@
     </Compile>
     <Compile Include="Web_Forms\Role.aspx.designer.cs">
       <DependentUpon>Role.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web_Forms\VotingDetail.aspx.cs">
+      <DependentUpon>VotingDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\VotingDetail.aspx.designer.cs">
+      <DependentUpon>VotingDetail.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

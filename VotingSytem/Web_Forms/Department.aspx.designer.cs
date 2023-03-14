@@ -69,22 +69,31 @@ namespace VotingSytem.Webforms
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
-        /// createJobButton control.
+        /// createDeptButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button createJobButton;
+        protected global::System.Web.UI.WebControls.Button createDeptButton;
 
         /// <summary>
-        /// updateJobButton control.
+        /// updateDeptButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button updateJobButton;
+        protected global::System.Web.UI.WebControls.Button updateDeptButton;
+
+        /// <summary>
+        /// clearFormButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button clearFormButton;
 
         /// <summary>
         /// DepartmentGV control.
