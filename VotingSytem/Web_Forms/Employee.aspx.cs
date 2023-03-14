@@ -12,12 +12,18 @@ namespace VotingSytem.Webforms
     public partial class Employee : System.Web.UI.Page
     {
         private string constr = "Data Source=localhost;Persist Security Info=True;User ID=Coursework; Password=coursework;";
+        //private string lblErrorMessage;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
                 updateEmployeeButton.Enabled = false;
-                this.BindGrid();
+                if (!string.IsNullOrEmpty(errorLabel.Text))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showModal", "$('#errorModal').modal('show');", true);
+                        }
+        
+                        this.BindGrid();
             }
         }
         private void BindGrid()
@@ -60,7 +66,6 @@ namespace VotingSytem.Webforms
 
             // Initializing the Insertion Query
             OracleCommand oCom = new OracleCommand("Insert into employee(employee_id, employee_name, date_of_birth, contact) Values('" + id + "','" + name + "','" + date + "','" + contact + "')");
-            System.Diagnostics.Debug.WriteLine(oCom);
             oCom.Connection = oCon;
             oCon.Open();
             oCom.ExecuteNonQuery();
@@ -116,21 +121,30 @@ namespace VotingSytem.Webforms
 
         protected void DeleteEmployee(object sender, GridViewDeleteEventArgs e)
         {
-            int ID = Convert.ToInt32(EmployeeGV.DataKeys[e.RowIndex].Values[0]);
-            // string constr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            using (OracleConnection con = new OracleConnection(constr))
+            try
             {
-                using (OracleCommand cmd = new OracleCommand("DELETE FROM Employee WHERE employee_id =" + ID))
+                int ID = Convert.ToInt32(EmployeeGV.DataKeys[e.RowIndex].Values[0]);
+                using (OracleConnection con = new OracleConnection(constr))
                 {
+                    using (OracleCommand cmd = new OracleCommand("DELETE FROM Employee WHERE employee_id =" + ID))
+                    {
 
-                    cmd.Connection = con;
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
                 }
+                this.BindGrid();
+                EmployeeGV.EditIndex = -1;
             }
-            this.BindGrid();
-            EmployeeGV.EditIndex = -1;
+           catch(Exception exception)
+            {
+                System.Diagnostics.Debug.WriteLine(exception);
+                errorLabel.Text = "The employee could not be deleted.";
+                // show the modal using jQuery
+                ScriptManager.RegisterStartupScript(this, GetType(), "showModal", "$('#errorModal').modal('show');", true);
+            }
 
         }
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)

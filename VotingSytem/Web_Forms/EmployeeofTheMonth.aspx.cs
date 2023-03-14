@@ -30,7 +30,9 @@ namespace VotingSytem.Webforms
             OracleConnection con = new OracleConnection(constr);
             con.Open();
             cmd.Connection = con;
-            cmd.CommandText = @"SELECT candidate_id, e.employee_name, votes_count FROM (SELECT candidate_id, COUNT(*) as votes_count FROM voting_detail WHERE voting_year = '2022' AND voting_month = 'January' GROUP BY candidate_id ORDER BY votes_count DESC) JOIN Employee e ON e.employee_id = candidate_id WHERE ROWNUM <= 3";
+            cmd.CommandText = @"SELECT candidate_id, e.employee_name, votes_count FROM (SELECT candidate_id, COUNT(*) as votes_count FROM voting_detail 
+WHERE voting_year = '2020' AND voting_month = 'January' GROUP BY candidate_id ORDER BY votes_count DESC) 
+JOIN Employee e ON e.employee_id = candidate_id WHERE ROWNUM <= 3";
             cmd.CommandType = CommandType.Text;
 
             DataTable dt = new DataTable("voting_detail");
